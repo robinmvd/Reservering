@@ -16,7 +16,7 @@ if (isset($_POST['signup-submit'])) {
         exit();
     }
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../signup.php?error=invalidmailorname);
+        header("Location: ../signup.php?error=invalidnamemail");
         exit();
     }
     //Check of er een juist emailadres is ingevuld
@@ -29,5 +29,10 @@ if (isset($_POST['signup-submit'])) {
         header("Location: ../signup.php?error=invalidname&mail=".$email);
         exit();
 
+    }
+    //check of de passwords gelijk zijn aan elkaar
+    else if ($password == $passwordRepeat) {
+        header("Location: ../signup.php?error=passwordcheck&username=".$username."&mail=".$email);
+        exit();
     }
 }
