@@ -47,7 +47,7 @@ if (isset($_POST['signup-submit'])) {
                 exit();
             } else {
                 $hashedPwd = password_hash($password, PASSWORD_DEFAULT); //hashed het $password
-                //voegt de data van het signup formulier toe aan de database
+                //voeg de data van het signup formulier toe aan de database
                 $sql = "INSERT INTO users (usernameUsers, emailUsers, pwdUsers) VALUES (?, ?, ?)";
                 $statement = mysqli_stmt_init($connection);
                 if (!mysqli_stmt_prepare($statement, $sql)) {
@@ -56,7 +56,7 @@ if (isset($_POST['signup-submit'])) {
                 } else {
                     mysqli_stmt_bind_param($statement, "sss", $username, $email, $hashedPwd);
                     mysqli_stmt_execute($statement);
-                    header("Location: ../signup.php?signup=succes");
+                    header("Location: ../signup.php?error=success");
                     exit();
                 }
             }

@@ -1,0 +1,28 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['userId'])) {
+    // redirect
+    header('Location: index.php');
+    exit;
+}
+
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<p>deze pagina is alleen te zien als je bent ingelogd</p>
+
+<a href="index.php">ga terug naar de home pagina</a>
+
+</body>
+</html>
